@@ -1,19 +1,20 @@
-$('.cd100').countdown100({
-    // Set Endtime here
-    // Endtime must be > current time
-    endtimeYear: y,
-    endtimeMonth: m,
-    endtimeDate: d,
-    endtimeHours: 0,
-    endtimeMinutes: 0,
-    endtimeSeconds: 0,
-    timeZone: ""
-    // ex:  timeZone: "America/New_York", can be empty
-    // go to " http://momentjs.com/timezone/ " to get timezone
-});
-$('.js-tilt').tilt({
-        scale: 1.1
-    })
+"use strict"
+var date = day * 24 * 60 * 60;
 
-// $('.ui.calendar').calendar();
+var countdown = setInterval(function () {
+    var dDays, dHours, dMinutes, dSecond;
+    date = date - 1;
+    dDays = Math.floor(date / (60 * 60 * 24));
+    dHours = Math.floor(date % (60 * 60 * 24) / (60 * 60));
+    dMinutes = Math.floor(date % (60 * 60) / (60));
+    dSecond = Math.floor(date % 60);
 
+    document.getElementById("days").innerHTML = dDays;
+    document.getElementById("hours").innerHTML = dHours;
+    document.getElementById("minutes").innerHTML = dMinutes;
+    document.getElementById("seconds").innerHTML = dSecond;
+
+    if (date == 0) {
+        clearInterval(countdown);
+    }
+}, 1000);

@@ -7,6 +7,8 @@
  */
 namespace Comingsoon\Controllers;
 
+use function Sodium\add;
+
 class PluginSettingsController extends Controller
 {
     private $slug = 'comingsoon-settings';
@@ -20,7 +22,9 @@ class PluginSettingsController extends Controller
             'admin_enqueue_scripts',
             [$this, 'enqueueScripts']
         );
+
     }
+
     public function enqueueScripts()
     {
         $oCurrentScreen = get_current_screen();
@@ -32,9 +36,13 @@ class PluginSettingsController extends Controller
         ) {
             return false;
         }
+        wp_enqueue_style('semantic', COMINGSOON_ASSETS_URL . 'semantic/semantic.css',
+            [],
+            COMINGSOON_VERSION
+        );
         wp_enqueue_style(
-            'semantic',
-            COMINGSOON_ASSETS_URL . 'semantic/semantic.css',
+            'abc',
+            COMINGSOON_ASSETS_URL . 'abc.css',
             [],
             COMINGSOON_VERSION
         );
@@ -45,6 +53,8 @@ class PluginSettingsController extends Controller
             COMINGSOON_VERSION,
             true
         );
+
+//        wp_enqueue_script('jquery.minjs');
     }
     public function registerMenu()
     {
@@ -55,6 +65,7 @@ class PluginSettingsController extends Controller
             $this->slug,
             [$this, 'comingsoonSettings']
         );
+
         add_menu_page(
             'Comingsoon 1',
             'CMSOON 1',
@@ -65,6 +76,14 @@ class PluginSettingsController extends Controller
     }
     public function comingsoon1Settings()
     {
+//        add_filter('hoa','change_wiloke',10,1);
+
+        function change_wiloke()
+        {
+            $output = "change value";
+            return $output;
+        }
+
         if (isset($_POST['cms_settings'])) {
             update_option(
                 "cms_setting",
@@ -79,16 +98,10 @@ class PluginSettingsController extends Controller
                 'lName' => null
             ]
         );
-        //        $a = [
-        //                [
-        //                    'type' => 'text'       // configs
-        //                ]
-        //        ];
-        //        foreach ($a as $x) {
-        //            HTML::$x['type']($x);
-        //        }
+
         include COMINGSOON_VIEWS_DIR . 'comingsoon1.php';
     }
+//    public function
     public static function comingsoonSettings()
     {
         $url = add_query_arg(
@@ -105,7 +118,6 @@ class PluginSettingsController extends Controller
         }
 
         $aOptions = get_option('comingsoon_settings');
-        var_dump($aOptions['eEnd']);
         $aOptions = wp_parse_args(
             $aOptions,
             [
@@ -113,9 +125,21 @@ class PluginSettingsController extends Controller
                 'dDescription' => null,
                 'sStart' => null,
                 'eEnd' => null,
-                'nNote' =>null,
-//                'cCheck' => null
+                'nNote' =>null
             ]
+        );
+        $sTime = explode('-',$aOptions['sStart']);
+        $eTime = explode('-',$aOptions['eEnd']);
+        $y = ($eTime[0] - $sTime[0]);
+        $m = ($eTime[1] - $sTime[1]);
+        $d = ($eTime[2] - $sTime[2]);
+        $dTime = $y*365 + $m*30 + $d ;
+
+        $aOptions['d']=(int)$dTime;
+
+        update_option(
+            'comingsoon_settings',
+            $aOptions
         );
         include COMINGSOON_VIEWS_DIR . 'coming.php';
     }

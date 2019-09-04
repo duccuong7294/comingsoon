@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="ComingsoonTest\Controllers\MyTitleTest" file="F:\xampp\htdocs\blog\wp-content\plugins\comingsoon\tests\Controllers\MyTitleTest.php" tests="3" assertions="2" errors="0" failures="1" skipped="1" time="0.007626">
+    <testcase name="testFirstName" class="ComingsoonTest\Controllers\MyTitleTest" classname="ComingsoonTest.Controllers.MyTitleTest" file="F:\xampp\htdocs\blog\wp-content\plugins\comingsoon\tests\Controllers\MyTitleTest.php" line="16" assertions="1" time="0.006545"/>
+    <testcase name="testLastName" class="ComingsoonTest\Controllers\MyTitleTest" classname="ComingsoonTest.Controllers.MyTitleTest" file="F:\xampp\htdocs\blog\wp-content\plugins\comingsoon\tests\Controllers\MyTitleTest.php" line="24" assertions="1" time="0.001081">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">ComingsoonTest\Controllers\MyTitleTest::testLastName
+Failed asserting that two strings are identical.
+--- Expected
++++ Actual
+@@ @@
+-'Cuong1'
++'Cuong'
+
+F:\xampp\htdocs\blog\wp-content\plugins\comingsoon\tests\Controllers\MyTitleTest.php:26
+</failure>
+    </testcase>
+    <testcase name="testFullName" class="ComingsoonTest\Controllers\MyTitleTest" classname="ComingsoonTest.Controllers.MyTitleTest" file="F:\xampp\htdocs\blog\wp-content\plugins\comingsoon\tests\Controllers\MyTitleTest.php" line="32" assertions="0" time="0.000000">
+      <skipped/>
+    </testcase>
+  </testsuite>
+</testsuites>

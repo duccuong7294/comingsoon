@@ -1,30 +1,19 @@
+<?php
+$aOptions = $aData[0];
+?>
 <head>
     <title>Coming Soon 4</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?php wp_head();?>
     <script type="text/javascript">
-        let yS = --><?php echo $sTime['0']?> ;
-        let mS = <?php echo $sTime['1']?> ;
-        let dS = <?php echo $sTime['2']?> ;
-        let yE = <?php echo $eTime['0']?> ;
-        let mE = <?php echo $eTime['1']?> ;
-        let dE = <?php echo $eTime['2']?> ;
-        let y = yE - yS ;
-        let m = mE - mS ;
-        let d = dE - dS ;
+        "use strict"
+        let day = "<?php Print($aOptions['d']) ;?>";
     </script>
+    <?php wp_head();?>
 </head>
 <body>
-<?php
-$aOptions = get_option('comingsoon_settings');
-$sT=$aOptions['sStart'];
-$eT=$aOptions['eEnd'];
-$sTime = explode('-',$sT);
-$eTime = explode('-',$eT);
-var_dump($sTime);
-var_dump($eTime);
-?>
+
+
 <div class="bg-g1 size1 flex-w flex-col-c-sb p-l-15 p-r-15 p-t-55 p-b-35
 respon1">
     <span></span>
@@ -39,28 +28,33 @@ respon1">
 
         <div class="flex-w flex-c cd100 p-b-82">
             <div class="flex-col-c-m size2 how-countdown">
-                <span class="l1-txt3 p-b-9 days">35</span>
+                <span id="days" class="l1-txt3 p-b-9 "> <?php echo esc_attr
+                    ($aOptions['d']);?></span>
                 <span class="s1-txt1">Days</span>
             </div>
 
             <div class="flex-col-c-m size2 how-countdown">
-                <span class="l1-txt3 p-b-9 hours">17</span>
+                <span id="hours" class="l1-txt3 p-b-9 "></span>
                 <span class="s1-txt1">Hours</span>
             </div>
 
             <div class="flex-col-c-m size2 how-countdown">
-                <span class="l1-txt3 p-b-9 minutes">50</span>
+                <span id="minutes" class="l1-txt3 p-b-9">6</span>
                 <span class="s1-txt1">Minutes</span>
             </div>
 
             <div class="flex-col-c-m size2 how-countdown">
-                <span class="l1-txt3 p-b-9 seconds">39</span>
+                <span id="seconds" class="l1-txt3 p-b-9 ">7</span>
                 <span class="s1-txt1">Seconds</span>
             </div>
         </div>
 
         <button class="flex-c-m s1-txt2 size3 how-btn"  data-toggle="modal" data-target="#subscribe">
-            Follow us for update now!
+<!--            Follow us for update now!-->
+            <?php
+            $coppy_right = "Hoa Xương Rồng";
+            echo apply_filters('cms1_set',$coppy_right);
+            ?>
         </button>
     </div>
 
