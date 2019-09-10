@@ -15,6 +15,9 @@
         <hr>
         <form action="<?php echo admin_url('admin.php?page=comingsoon-settings'); ?>"
               method="post" class="ui form">
+
+            <?php do_action('comingsoon/views/coming/after-open-form', $aOptions); ?>
+
             <div class="field">
                 <h2 for="title">Title coming soon </h2>
                 <p><i>(Your title of website)</i> <span style="color: red;">*</span></p>
@@ -111,6 +114,9 @@
                     <label>Run Plugin</label>
                 </div>
             </div>
+
+            <?php do_action('comingsoon/views/coming/before-save-changes', $aOptions); ?>
+
             <button class="ui button green" type="submit">Save Changes</button>
         </form>
     </div>

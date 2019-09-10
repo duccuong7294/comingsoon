@@ -7,9 +7,9 @@ $aOptions = $aData[0];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script type="text/javascript">
         "use strict"
-        let day = "<?php Print($aOptions['d']) ;?>";
+        let day = "<?php Print($aOptions['d']);?>";
     </script>
-    <?php wp_head();?>
+    <?php wp_head(); ?>
 </head>
 <body>
 
@@ -18,18 +18,20 @@ $aOptions = $aData[0];
 respon1">
     <span></span>
     <div class="flex-col-c p-t-50 p-b-50">
+        <?php do_action('comingsoon/views/frontend/before-title', $aOptions); ?>
+
         <h3 class="l1-txt1 txt-center p-b-10">
-            <?php echo esc_attr($aOptions['tTitle']);?>
+            <?php echo esc_attr($aOptions['tTitle']); ?>
         </h3>
 
         <p class="txt-center l1-txt2 p-b-60">
-            <?php echo esc_attr($aOptions['dDescription']);?>
+            <?php echo esc_attr($aOptions['dDescription']); ?>
         </p>
 
         <div class="flex-w flex-c cd100 p-b-82">
             <div class="flex-col-c-m size2 how-countdown">
                 <span id="days" class="l1-txt3 p-b-9 "> <?php echo esc_attr
-                    ($aOptions['d']);?></span>
+                    ($aOptions['d']); ?></span>
                 <span class="s1-txt1">Days</span>
             </div>
 
@@ -49,17 +51,19 @@ respon1">
             </div>
         </div>
 
-        <button class="flex-c-m s1-txt2 size3 how-btn"  data-toggle="modal" data-target="#subscribe">
-<!--            Follow us for update now!-->
+        <button class="flex-c-m s1-txt2 size3 how-btn" data-toggle="modal" data-target="#subscribe">
+            <!--            Follow us for update now!-->
             <?php
             $coppy_right = "Hoa Xương Rồng";
-            echo apply_filters('cms1_set',$coppy_right);
+            echo apply_filters('cms1_set', $coppy_right);
             ?>
         </button>
+
+        <?php do_action('comingsoon/views/frontend/after-subscribe-button', $aOptions); ?>
     </div>
 
     <span class="s1-txt3 txt-center">
-         <?php echo esc_attr($aOptions['nNote']);?>
+         <?php echo esc_attr($aOptions['nNote']); ?>
 		</span>
 
 </div>
@@ -82,12 +86,12 @@ respon1">
                 </p>
 
                 <form class="contact100-form validate-form">
-                    <div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
+                    <div class="wrap-input100 m-b-10 validate-input" data-validate="Name is required">
                         <input class="s1-txt4 placeholder0 input100" type="text" name="name" placeholder="Name">
                         <span class="focus-input100"></span>
                     </div>
 
-                    <div class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
+                    <div class="wrap-input100 m-b-20 validate-input" data-validate="Email is required: ex@abc.xyz">
                         <input class="s1-txt4 placeholder0 input100" type="text" name="email" placeholder="Email">
                         <span class="focus-input100"></span>
                     </div>
@@ -107,6 +111,6 @@ respon1">
 
     </div>
 </div>
-<?php wp_footer();?>
+<?php wp_footer(); ?>
 </body>
 </html>
